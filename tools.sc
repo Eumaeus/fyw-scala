@@ -310,3 +310,13 @@ def sumSomeCharsInCorpus(corpus:Corpus, chars:String):Int = {
 	val count:Int = countVec.reduceLeft( _ + _ )
 	count
 }
+
+def wordsPerChar(corpus:Corpus, chars:String):Double = {
+	val wordCount:Int = sumEnglishWordsInCorpus(corpus)
+	val charCount:Int = sumSomeCharsInCorpus(corpus, chars)
+	// guard against divide-by-zero error!
+	val wpc:Double = {
+		if (charCount > 0) { wordCount / charCount } else { 0 }
+	}
+	wpc
+}
