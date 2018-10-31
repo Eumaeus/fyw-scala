@@ -35,9 +35,13 @@ In `/vagrant/fyw-scala`…
 
 - `sbt console` Load the REPL.
 - `:load editing.sc` Run your script.
-- [Edit your script.]
+- Edit your script in Atom.
 - `:load editing.sc` Run it again.
 - `:quit` To get out of the REPL.
+
+## Start Documenting Your Work
+
+…
 
 
 
