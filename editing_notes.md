@@ -28,17 +28,6 @@ import edu.holycross.shot.ohco2._
 
 `for (n <- corpus.nodes) println(s"${n.urn}\t${n.text}")`
 
-### Load a lexicon:
-
-~~~ scala
-def loadWordList(filepath:String):Vector[String] = {
-	val lexData:Vector[String] = Source.fromFile(filepath).getLines.toVector
-	lexData
-}
-
-val baseLexicon:Vector[String] = loadWordList("data/words.txt")
-~~~
-
 ### Tokenize a String
 
 ~~~ scala
@@ -53,6 +42,8 @@ def tokenizeString(str:String, splitters:String):Vector[String] = {
 ~~~
 
 ### Tokenize a CitableNode
+
+Given a CITE `CitableNode` and a regular expression string defining the tokenization, return a Vector of citable nodes with Exemplar-level URNs identifying each token.
 
 ~~~ scala
 def tokenizeCtsNode(node:CitableNode, splitters:String, exemplarID:String = "token"):Vector[CitableNode] = {
