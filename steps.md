@@ -49,7 +49,17 @@ Start this file by providing the bibliographical citation to the source of the t
 
 - Make a new, blank file in `/vagrant/fyw-scala/data` named `working.txt`.
 - Copy and paste the text of your essay from the web-page into this file. Save the file.
-- 
+
+## Special Git Update
+
+Because you played around in the file `editing.sc`, you need to replace it with an up-to-date, pristine copy of the latest version. To *replace* a file on your filesystem with an up-to-date copy, use:
+
+    git checkout editing.sc
+
+(From now on, these instructions will assume you did a `cd /vagrant/fyw-scala` in the VM beforehand, unless otherwise noted.)
+
+## Load the Text into Scala
+
 
 
 
