@@ -9,8 +9,7 @@ import edu.holycross.shot.seqcomp._
 import co.theasi.plotly
 import util.Random
 
-val myName:String = "Christopher W. Blackwell"
-
-println("Hello, myName")
-
-println(s"Hello, ${myName}")
+def splitWithSplitter(text:String, splitters:String = "[.?!]"):Vector[String] = {
+	val regexWithSplitter = s"(?<=${splitters})"
+	text.split(regexWithSplitter).toVector
+}

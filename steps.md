@@ -4,7 +4,7 @@
 
 - Get an account on GitHub (https://github.com).
 - Create a new repository with a short descriptive name, *e.g.* `nepos_work`.
-	- Create a `README.md` file in the process.	
+	- Create a `README.md` file in the process.
 - Invite others as collaborators.
 - Clone the repository to your VM at `/vagrant/`
 - Set your username for that repository:
@@ -41,7 +41,16 @@ In `/vagrant/fyw-scala`…
 
 ## Start Documenting Your Work
 
+You should have a Git repository for your work, containing two files: `[name]-paper.md` and `[name]-tech.md`. You will document your editorial work in the latter, *e.g.* `blackwell-tech.md`.
+
+Start this file by providing the bibliographical citation to the source of the translation, as well as a shout-out to whoever put it online, with a URL.
+
+## Get the Text
+
+- Make a new, blank file in `/vagrant/fyw-scala/data` named `working.txt`.
+- Copy and paste the text of your essay from the web-page into this file. Save the file.
+- 
+
+
+
 …
-
-
-
