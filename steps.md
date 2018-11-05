@@ -56,10 +56,37 @@ Because you played around in the file `editing.sc`, you need to replace it with 
 
     git checkout editing.sc
 
+Then do the usual…
+
+    git pull
+
 (From now on, these instructions will assume you did a `cd /vagrant/fyw-scala` in the VM beforehand, unless otherwise noted.)
 
 ## Load the Text into Scala
 
+In the Scala console (`sbt console`)…
+
+- `:load editing.sc` This loads some libraries ( = "programming already done by other people" that you will be using. )
+- Save as a **value** (`val`) the *path* to your copied-and-pasted text.
+
+~~~
+// Identify the file we are working from
+val inputFile:String = "data/working.txt"
+~~~
+
+- Load that text into a big **string**.
+
+~~~
+// Load the contents of that file into a Vector of Strings
+val bigString:String = Source.fromFile(inputFile).getLines.mkString(" ")
+~~~
+
+
+## Split the Text into Sentences
+
+Practice in Atom: Open `working.txt` in Atom.
+
+What marks the end of a sentence?
 
 
 
