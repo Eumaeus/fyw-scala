@@ -88,6 +88,10 @@ Practice in Atom: Open `working.txt` in Atom.
 
 What marks the end of a sentence?
 
+- Lossy Split with `.split("[.?!]")`
+- Better split with `.splitWithSplitter(String,String)`
+
+> 
 
 
 …
