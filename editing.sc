@@ -9,7 +9,7 @@ import edu.holycross.shot.seqcomp._
 import co.theasi.plotly
 import util.Random
 
-def splitWithSplitter(text:String, splitters:String = "[.?!]"):Vector[String] = {
+def splitWithSplitter(text:String, splitters:String = "[. ?!]"):Vector[String] = {
 	val regexWithSplitter = s"(?<=${splitters})"
 	text.split(regexWithSplitter).toVector.filter(_.size > 0)
 }
@@ -24,13 +24,14 @@ def tokenizeCtsNode(node:CitableNode, splitters:String, exemplarID:String = "tok
 		val exemplarUrn:CtsUrn = editionUrn.addExemplar(exemplarID)
 		val editionCitation:String = node.urn.passageComponent
 		val passage:String = node.text
-		val tokens:Vector[String] = splitWithSplitter(passage, splitters)
+		//val tokens:Vector[String] = splitWithSplitter(passage, splitters)
+		val tokens:Vector[String] = passage.split(splitters).toVector.filter(_.size > 0)
 		val tokenizedNodes:Vector[CitableNode] = {
 			tokens.zipWithIndex.map{ case (n, i) => {
 				val newUrn:CtsUrn = CtsUrn(s"${exemplarUrn}${editionCitation}.${i}")
 				val newNode:CitableNode = CitableNode(newUrn, n)
 				newNode
-			}}.toVector
+			}}.filter(_.text != " ").filter(_.text.size > 0).toVector
 		}
 		tokenizedNodes
 	} catch {
