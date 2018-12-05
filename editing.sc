@@ -44,3 +44,38 @@ def tokenizeCorpus(c:Corpus, splitters:String, exemplarID:String = "token"):Corp
 	val newCorpus:Corpus = Corpus(nodeVector)
 	newCorpus
 }
+
+def invalidateString(s:String):Vector[Char] = {
+	val validChars = """[0-9A-Za-z.,;?:'" )(!]""".r
+	val charVector:Vector[Char] = s.toVector
+	val invalidChars:Vector[Char] = charVector.filter(c => {
+		validChars.findAllIn(c.toString).size == 0
+	})
+	invalidChars
+}
+
+def invalidateCitableNode(n:CitableNode):Option[CitableNode] = {
+	val text:String = n.text
+	val invalidChars:Vector[Char] = invalidateString(text)
+	invalidChars.size match {
+		case s if (s > 0) => {
+			val invalidCharString:String = invalidChars.map(c => {
+				val newString = s""""${c}""""
+				newString
+			}).mkString(",")
+			Some(CitableNode(n.urn, invalidCharString))
+		}
+		case _ => None
+	}
+}
+
+def invalidateCorpus(c:Corpus):Option[Corpus] = {
+	val invalidNodeOptions:Vector[Option[CitableNode]] = c.nodes.map( n => {
+		invalidateCitableNode(n)
+	})
+	val invalidNodes:Vector[CitableNode] = invalidNodeOptions.filter( n => {
+		n != None
+	}).map( sn => sn.get )
+
+	if ( invalidNodes.size > 0 ) Some(Corpus(invalidNodes)) else None
+}
