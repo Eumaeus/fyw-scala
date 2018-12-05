@@ -79,3 +79,14 @@ def invalidateCorpus(c:Corpus):Option[Corpus] = {
 
 	if ( invalidNodes.size > 0 ) Some(Corpus(invalidNodes)) else None
 }
+
+def reportInvalidChars(c:Corpus):String = {
+	val ic:Option[Corpus] = invalidateCorpus(c)
+	ic match {
+		case Some(c) => {
+				//c.nodes.mkString(" ").replaceAll(" ","")
+				c.nodes.map(_.text).mkString(" ").replaceAll(" ","").replaceAll(""""""","")
+		}
+		case None => "No invalid characters!"
+	}
+}
